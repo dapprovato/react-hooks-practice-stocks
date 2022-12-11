@@ -1,11 +1,18 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Stock from "./Stock";
 
-function StockContainer() {
+function StockContainer({stocks, addPortfolioStock}) {
+
+  function handleStockClick(stock) {
+    addPortfolioStock(stock)
+  }
+
   return (
     <div>
       <h2>Stocks</h2>
-      {/* render stock list here*/}
+      {stocks.map((stock) =>
+        <Stock stock={stock} handleStockClick={handleStockClick} />
+      )}
     </div>
   );
 }
